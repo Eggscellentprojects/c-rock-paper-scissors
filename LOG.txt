@@ -58,3 +58,9 @@ The main bugs as of now are:
 -Found a bug where the computer would always return rock as the option to go against.
 
 -Added PrintHelpList() which couts all commands that were programmed.
+
+~~12/11/2022
+
+-Fixed a bug mentioned in the 11/27/2022 log
+
+-Included time.h for srand() to avoid the computer giving us the same sequence of choices.
