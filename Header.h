@@ -31,5 +31,5 @@ public:
 	bool process(const std::vector<std::string>& ParsedInput);
 	static void FindWinner(Player& Human);
 	bool STOP();
-	static void ErrorPrint();
+	static void PrintError();
 };

@@ -3,6 +3,7 @@
 #include <cstdlib>
 #include <string>
 #include <vector>
+#include <time.h> // Used to for seeding pseudo-random number generator used by rand()
 #include "Header.h"
 
 bool GameManager::PrintHelpList()
@@ -15,7 +16,7 @@ bool GameManager::PrintHelpList()
 	return false;
 }
 
-void GameManager::ErrorPrint()
+void GameManager::PrintError()
 {
 	std::cout << "ERROR:" << "\t BAD COMMAND!!!" << std::endl;
 }
@@ -187,7 +188,7 @@ bool GameManager::process(const std::vector<std::string>& ParsedInput)
 {
 	if (ParsedInput.empty())
 	{
-		GameManager::ErrorPrint();
+		GameManager::PrintError();
 		return false;
 	}
 	
@@ -206,7 +207,7 @@ bool GameManager::process(const std::vector<std::string>& ParsedInput)
 	}
 	else if (ParsedInput[0] == "PLAY" && (ParsedInput[1] != "rock" || ParsedInput[1] != "paper" || ParsedInput[1] != "scissors"))
 	{
-		GameManager::ErrorPrint();
+		GameManager::PrintError();
 		return false;
 	}
 	else if (ParsedInput[0] == "HELP") //Call command list function
@@ -216,7 +217,7 @@ bool GameManager::process(const std::vector<std::string>& ParsedInput)
 	}
 	else
 	{
-		GameManager::ErrorPrint();
+		GameManager::PrintError();
 	}
 
 	return false; //return value so g++ can stop giving me warnings
@@ -224,6 +225,7 @@ bool GameManager::process(const std::vector<std::string>& ParsedInput)
 
 int main()
 {
+	srand(time(0)); // Set the seed to generate "random" numbers for rand()
 	GameManager engine;
 	MyParser parser;
 
