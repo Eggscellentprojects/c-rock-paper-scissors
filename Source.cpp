@@ -8,17 +8,17 @@
 
 bool GameManager::PrintHelpList()
 {
-	std::cout << std::endl;
-	std::cout << "--Commands:" << std::endl;
-	std::cout << "STOP - Stops the program" << std::endl;
-	std::cout << "PLAY - Type 'PLAY' + rock/paper/scissors to play" << std::endl;
-	std::cout << std::endl << "ALL COMMANDS MUST BE UPPERCASE EXCEPT rock/paper/scissors!!!" << std::endl;
+	std::cout << "\n";
+	std::cout << "--Commands:\n";
+	std::cout << "STOP - Stops the program\n";
+	std::cout << "PLAY - Type 'PLAY' + rock/paper/scissors to play\n";
+	std::cout << "ALL COMMANDS MUST BE UPPERCASE EXCEPT rock/paper/scissors!!!\n \n";
 	return false;
 }
 
 void GameManager::PrintError()
 {
-	std::cout << "ERROR:" << "\t BAD COMMAND!!!" << std::endl;
+	std::cout << "BAD COMMAND!!!\n \n";
 }
 
 choice ComputerChoice() //Helper function that returns a choice (the computer's choice) to be compared to the player's choice later on
@@ -197,7 +197,7 @@ bool GameManager::process(const std::vector<std::string>& ParsedInput)
 		Player Human;
 		Human.SetChoice(ParsedInput[1]);
 		GameManager::FindWinner(Human);
-		std::cout << "\n" << "Play again?" << std::endl;
+		std::cout << "\nPlay again?\n \n";
 
 		return false;
 	}
@@ -232,9 +232,10 @@ int main()
 	std::string UserInput;
 	bool terminate = false;
 
-	std::cout << "* * * * * * * * * * * * * * * * * * * * * * * * * * * *" << std::endl;
-	std::cout << "*                 ROCK, PAPER, SCISSORS!              *" << std::endl;
-	std::cout << "* * * * * * * * * * * * * * * * * * * * * * * * * * * *" << std::endl;
+	std::cout << "* * * * * * * * * * * * * * * * * * * * * * * * * * * *\n";
+	std::cout << "*                 ROCK, PAPER, SCISSORS!              *\n";
+	std::cout << "* * * * * * * * * * * * * * * * * * * * * * * * * * * *\n";
+	std::cout <<"Type 'HELP' for commands \n \n"; 
 
 	while (!terminate)
 	{
