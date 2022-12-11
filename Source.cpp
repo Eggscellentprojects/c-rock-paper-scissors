@@ -5,6 +5,16 @@
 #include <vector>
 #include "Header.h"
 
+bool GameManager::PrintHelpList()
+{
+	std::cout << std::endl;
+	std::cout << "--Commands:" << std::endl;
+	std::cout << "STOP - Stops the program" << std::endl;
+	std::cout << "PLAY - Type 'PLAY' + rock/paper/scissors to play" << std::endl;
+	std::cout << std::endl << "ALL COMMANDS MUST BE UPPERCASE EXCEPT rock/paper/scissors!!!" << std::endl;
+	return false;
+}
+
 void GameManager::ErrorPrint()
 {
 	std::cout << "ERROR:" << "\t BAD COMMAND!!!" << std::endl;
@@ -14,21 +24,19 @@ choice ComputerChoice() //Helper function that returns a choice (the computer's 
 {
 	choice ComputerChoice;
 
-	std::random_device rd; //generate random number
-	std::mt19937 gen(rd()); //seed the generator
-	std::uniform_int_distribution<> distr(1, 3); //define the range from 1 to 3
+	int randNum = std::rand() % 3 + 1;
 
-	if (distr(gen) == 1)
+	if (randNum == 1)
 	{
 		ComputerChoice = choice::rock;
 		return ComputerChoice;
 	}
-	else if (distr(gen) == 2)
+	else if (randNum == 2)
 	{
 		ComputerChoice = choice::paper;
 		return ComputerChoice;
 	}
-	else if (distr(gen) == 3)
+	else if (randNum == 3)
 	{
 		ComputerChoice = choice::scissors;
 		return ComputerChoice;
@@ -196,15 +204,19 @@ bool GameManager::process(const std::vector<std::string>& ParsedInput)
 	{
 		return true;
 	}
-	else if (ParsedInput[0] != "STOP" && ParsedInput[0] != "PLAY")
-	{
-		GameManager::ErrorPrint();
-		return false;
-	}
 	else if (ParsedInput[0] == "PLAY" && (ParsedInput[1] != "rock" || ParsedInput[1] != "paper" || ParsedInput[1] != "scissors"))
 	{
 		GameManager::ErrorPrint();
 		return false;
+	}
+	else if (ParsedInput[0] == "HELP") //Call command list function
+	{
+		GameManager::PrintHelpList();
+		return false;
+	}
+	else
+	{
+		GameManager::ErrorPrint();
 	}
 
 	return false; //return value so g++ can stop giving me warnings

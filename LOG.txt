@@ -52,3 +52,9 @@ The main bugs as of now are:
 	they typed a bad command
 
 -Changed name convention and minor implementation of the FindWinner() method
+
+~~11/27/2022
+
+-Found a bug where the computer would always return rock as the option to go against.
+
+-Added PrintHelpList() which couts all commands that were programmed.
